@@ -1,3 +1,17 @@
+# RecipeExplorer
+
+A React app to search, view, and save recipes.
+
+## About
+
+RecipeExplorer helps users find delicious recipes, view details, and save favorites for quick access. Built with React.
+
+## Features
+
+- Search recipes by name
+- View recipe details
+- Add/remove favorites
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
