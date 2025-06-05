@@ -4,7 +4,9 @@ A React app to search, view, and save recipes.
 
 ## About
 
-RecipeExplorer helps users find delicious recipes, view details, and save favorites for quick access. Built with React.
+RecipeExplorer allows users to discover delicious recipes, view detailed instructions, and save their favorite dishes for quick access. Built using React, it offers a smooth and responsive experience.
+
+
 
 ## Features
 
