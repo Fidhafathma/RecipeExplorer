@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './search.css'
 
-function SearchPage() {
+function SearchPage({ favorites, setFavorites }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [recipes, setRecipes] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
@@ -31,6 +31,19 @@ const goToRecipe=(id)=>{
   navigate(`/recipe/${id}`)
 };
 
+const isFavorite = (recipe) => {
+  return favorites.some((fav) => fav.idMeal === recipe.idMeal);
+};
+
+const toggleFavorite = (recipe) => {
+  if (isFavorite(recipe)) {
+    
+    setFavorites(favorites.filter((fav) => fav.idMeal !== recipe.idMeal));
+  } else {
+    
+    setFavorites([...favorites, recipe]);
+  }
+};
 
   return (
     <div>
@@ -40,20 +53,28 @@ const goToRecipe=(id)=>{
       />
        <button  id="searchbtn" onClick={handleSearch}>Search</button>
       <button id="viewfav" onClick={() => setShowFavorites(!showFavorites)}>
-        {showFavorites ? "🔍 View All" : "❤️ View Favorites"}
+        {showFavorites ? " View All" : "❤️ View Favorites"}
       </button>
       <h2 style={{ color: "Black",fontSize:40 }}> {!searchTerm && !showFavorites ? "Trending Recipes" : ""}</h2>
 
 
      
       <div className="recipe-list" >
-        {recipes.slice(0,12).map((recipe) => (
-          <div key={recipe.idMeal} className="recipe-card" onClick={()=>goToRecipe(recipe.idMeal)}>
-            <h3>{recipe.strMeal}</h3>
-            <img src={recipe.strMealThumb} alt={recipe.strMeal} width={200}/>
-            
-            
-          </div>
+        {displayedRecipes.slice(0,12).map((recipe) => (
+          <div key={recipe.idMeal} className="recipe-card">
+  <h3>{recipe.strMeal}</h3>
+  <img
+    src={recipe.strMealThumb}
+    alt={recipe.strMeal}
+    width={200}
+    onClick={() => goToRecipe(recipe.idMeal)}
+    style={{ cursor: "pointer" }}
+  />
+  <button onClick={() => toggleFavorite(recipe)}>
+    {isFavorite(recipe) ? "❤️ Remove Favorite" : "🤍 Add to Favorite"}
+  </button>
+</div>
+
         ))}
       </div>
     </div>
