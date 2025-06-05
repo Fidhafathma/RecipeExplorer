@@ -1,0 +1,27 @@
+#root{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  body {
+    background-image: url('foodback.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  h1{
+    color: #263c23;
+  }
+  p{
+    color: #253522;
+  }
+  button{
+    color: #ffffff;
+    background-color: #37832a;
+  }
+  button:hover{
+    background-color: #263c23;
+  }
